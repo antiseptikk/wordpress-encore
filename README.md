@@ -6,11 +6,55 @@ Simple and light script to handle and register Webpack Encore assets to WordPres
 
 ## Installation
 
-## Usage
+### Using Composer
+
+```bash
+composer require antiseptikk/wordpress-encore
+```
+
+Then in your `functions.php` file of your theme, load composer auto-loader.
+
+```php
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$encore = new \Antiseptikk\Encore('build', '1.0.0', 'my-website.com');
+```
+
+#### Using [WPress composer-skeleton](https://github.com/agencearcange/wordpress-composer-skeleton)
+
+We recommend using [WPress composer-skeleton](https://github.com/agencearcange/wordpress-composer-skeleton)  for using this library, 
+you can use config constants like `WP_HOME`
+
+```php
+<?php
+
+$encore = new \Antiseptikk\Encore('build', '1.0.0', WP_HOME);
+```
+
+## Example
 
 ```PHP
-$enqueue = new \Antiseptikk\Encore('build', '1.0.0', WP_HOME);
-$enqueue->enqueue('blog', 'main', []);
+<?php
+
+use Antiseptikk\Encore;
+
+class Bootstrap
+{
+    private $encore;   
+
+    public function __constuct()
+    {
+        $this->encore = new Encore('build', '1.0.0', WP_HOME);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
+    }
+
+    public function enqueue_assets()
+    {
+        $this->encore->enqueue('app', 'main', []);
+    }
+}
 ```
 
 ## Contribution
