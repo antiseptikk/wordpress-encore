@@ -13,7 +13,7 @@
     "php": "^7.4"
   },
   "require-dev": {
-    "antiseptikk/dev-kit": "^0.1",
+    "antiseptikk/dev-kit": "^1.0",
     "phpcompatibility/phpcompatibility-wp": "^2.1.0",
     "phpunit/phpunit": "^7.3.0",
     "brain/monkey": "^2.2.0",

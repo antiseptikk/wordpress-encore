@@ -33,12 +33,14 @@ class Encore
      */
     private string $rootUrl = '';
 
-    public function __construct($outputPath, $version, $url)
+    public function __construct($outputPath, $version, $url, $themePath = null)
     {
         $this->outputPath = $outputPath;
         $this->version = $version;
 
-        $themePath = \get_template_directory();
+        if (!$themePath) {
+            $themePath = \get_template_directory();
+        }
 
         // Set the root path and URL
         $filepath = \trailingslashit($themePath) . $this->outputPath . '/';
