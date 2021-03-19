@@ -10,14 +10,17 @@
     }
   ],
   "require": {
-    "php": "^7.4"
+    "php": ">=7.4 || 8.0"
   },
   "require-dev": {
     "antiseptikk/dev-kit": "^1.0",
     "phpcompatibility/phpcompatibility-wp": "^2.1.0",
     "phpunit/phpunit": "^7.3.0",
     "brain/monkey": "^2.2.0",
-    "giacocorsiglia/wordpress-stubs": "^4.9.5"
+    "giacocorsiglia/wordpress-stubs": "^4.9.5",
+    "szepeviktor/phpstan-wordpress": "^0.7.4",
+    "humanmade/psalm-plugin-wordpress": "^2.0",
+    "php-stubs/wordpress-stubs": "^5.7"
   },
   "autoload": {
     "psr-4": {

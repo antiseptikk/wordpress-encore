@@ -33,7 +33,7 @@ class Encore
      */
     private string $rootUrl = '';
 
-    public function __construct($outputPath, $version, $url, $themePath = null)
+    public function __construct(string $outputPath, string $version, string $url, ?string $themePath = null)
     {
         $this->outputPath = $outputPath;
         $this->version = $version;

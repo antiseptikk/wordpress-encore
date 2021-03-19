@@ -1,0 +1,35 @@
+name: Quality Assurance
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        types: [opened, synchronize, reopened, ready_for_review]
+
+env:
+    APP_ENV: test
+    PHP_EXTENSIONS: mbstring, bcmath, sqlite3, gd, intl
+
+jobs:
+    coding-standards:
+        name: "Coding Standards"
+        runs-on: ${{ matrix.operating-system }}
+        strategy:
+            matrix:
+                operating-system: [ 'ubuntu-latest' ]
+                php-versions: [ '7.4', '8.0' ]
+        steps:
+            -   name: "Install PHP"
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-versions }}
+                    extensions: ${{ env.PHP_EXTENSIONS }}
+
+            -   name: "Checkout"
+                uses: actions/checkout@v2
+
+            -   name: "Composer Install"
+                run: composer install --no-interaction --no-progress --no-suggest
+
+            -   name: "Easy coding standard"
+                run: ./vendor/bin/ecs check ./src
