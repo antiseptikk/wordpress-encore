@@ -170,7 +170,7 @@ class Encore
 
     public function getUrl(string $asset)
     {
-        if (strpos('localhost', $asset)) {
+        if (strpos($asset, 'localhost')) {
             return $asset;
         }
 
